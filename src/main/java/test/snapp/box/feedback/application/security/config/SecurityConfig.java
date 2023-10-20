@@ -56,21 +56,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .headers()// this allows the H2 console to run in an iframe
-                .frameOptions() // this allows the H2 console to run in an iframe
-                .sameOrigin() // this allows the H2 console to run in an iframe
-                .and()// this allows the H2 console to run in an iframe
                 .csrf(AbstractHttpConfigurer::disable)
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.anyRequest().permitAll() // Todo .authenticated()
-//                                .requestMatchers("/api/auth/**").permitAll()
-//                                .requestMatchers("/api/test/**").permitAll()
-//                                .requestMatchers("/h2-console/**").permitAll()
-//                                .requestMatchers("/swagger-ui.html**").permitAll()
-//                                .requestMatchers("/webjars/**").permitAll()
-//                                .requestMatchers("/v2/api-docs").permitAll()
+                        auth.anyRequest().permitAll()
 
                 );
 
