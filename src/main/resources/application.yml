@@ -1,0 +1,3 @@
+jwt:
+  secret: Th!$1$T@kEn
+  expirationMs: 3600000 # 1 hour
