@@ -67,4 +67,12 @@ public class FeedbackService {
             return new FeedbackDisplay(feedback, delivery);
         }).collect(Collectors.toList());
     }
+
+    public Double getBikerAverageRating(Long bikerId) {
+        return feedbackRepository.findAverageRatingByBikerId(bikerId);
+    }
+
+    public List<Feedback> getBikerFeedbacks(Long bikerId) {
+        return feedbackRepository.findFeedbacksByBikerId(bikerId);
+    }
 }
